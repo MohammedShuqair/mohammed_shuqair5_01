@@ -46,6 +46,7 @@ class _ProfileState extends State<Profile> {
                 child: Image.asset(
                   photographer,
                   fit: BoxFit.cover,
+                  width: double.infinity,
                   height: sh * 0.4,
                 ),
               ),
