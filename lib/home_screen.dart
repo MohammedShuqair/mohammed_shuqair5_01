@@ -12,11 +12,13 @@ class HomeScreen extends StatefulWidget {
 List<Widget> screens = [
   const Profile(),
   const Search(),
-  Image.asset(
-    'assets/images/meme.jpg',
-    width: double.infinity,
-    height: 300,
-    alignment: Alignment.center,
+  Center(
+    child: Image.asset(
+      'assets/images/meme.jpg',
+      width: double.infinity,
+      height: 300,
+      alignment: Alignment.center,
+    ),
   ),
 ];
 
@@ -25,52 +27,61 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 500),
-          child: screens[_currentIndex],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(vertical: p18),
-        margin: const EdgeInsets.only(bottom: p18, left: p18, right: p18),
-        decoration: BoxDecoration(
-            color: lightBC, borderRadius: BorderRadius.circular(r30)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            NavItem(
-              onTap: () {
-                setState(() {
-                  _currentIndex = 0;
-                });
-              },
-              icon: Icons.person_3_outlined,
-              itemIndex: 0,
-              currentIndex: _currentIndex,
+      body: Stack(
+        children: [
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 500),
+            child: screens[_currentIndex],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: p18),
+              margin: const EdgeInsets.only(
+                bottom: p18,
+                left: p18,
+                right: p18,
+              ),
+              decoration: BoxDecoration(
+                  color: lightBC, borderRadius: BorderRadius.circular(r30)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  NavItem(
+                    onTap: () {
+                      setState(() {
+                        _currentIndex = 0;
+                      });
+                    },
+                    icon: Icons.person_3_outlined,
+                    itemIndex: 0,
+                    currentIndex: _currentIndex,
+                  ),
+                  NavItem(
+                    onTap: () {
+                      setState(() {
+                        _currentIndex = 1;
+                      });
+                    },
+                    icon: Icons.search_rounded,
+                    itemIndex: 1,
+                    currentIndex: _currentIndex,
+                  ),
+                  NavItem(
+                    onTap: () {
+                      setState(() {
+                        _currentIndex = 2;
+                      });
+                    },
+                    icon: Icons.settings_outlined,
+                    itemIndex: 2,
+                    currentIndex: _currentIndex,
+                  ),
+                ],
+              ),
             ),
-            NavItem(
-              onTap: () {
-                setState(() {
-                  _currentIndex = 1;
-                });
-              },
-              icon: Icons.search_rounded,
-              itemIndex: 1,
-              currentIndex: _currentIndex,
-            ),
-            NavItem(
-              onTap: () {
-                setState(() {
-                  _currentIndex = 2;
-                });
-              },
-              icon: Icons.settings_outlined,
-              itemIndex: 2,
-              currentIndex: _currentIndex,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -34,88 +34,91 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     final double sh = MediaQuery.of(context).size.height;
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(p18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(r30),
-              child: Image.asset(
-                photographer,
-                fit: BoxFit.cover,
-                height: sh * 0.4,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(
+              top: p18, left: p18, right: p18, bottom: 120),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(r30),
+                child: Image.asset(
+                  photographer,
+                  fit: BoxFit.cover,
+                  height: sh * 0.4,
+                ),
               ),
-            ),
-            const SizedBox(height: s18),
-            const Text(
-              "Mosawer Gamed",
-              style: bold,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              "The best photographer in Gaza, Palestine, the Arab world, Asia, Africa and our neighborhood",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: Colors.grey[600]),
-            ),
-            const SizedBox(height: s18),
-            Container(
-              padding: const EdgeInsetsDirectional.fromSTEB(26, 14, 14, 14),
-              decoration: BoxDecoration(
-                  color: lightBC, borderRadius: BorderRadius.circular(18)),
-              child: Stack(
-                alignment: AlignmentDirectional.centerEnd,
+              const SizedBox(height: s18),
+              const Text(
+                "Mosawer Gamed",
+                style: bold,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                "The best photographer in Gaza, Palestine, the Arab world, Asia, Africa and our neighborhood",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium
+                    ?.copyWith(color: Colors.grey[600]),
+              ),
+              const SizedBox(height: s18),
+              Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(26, 14, 14, 14),
+                decoration: BoxDecoration(
+                    color: lightBC, borderRadius: BorderRadius.circular(18)),
+                child: Stack(
+                  alignment: AlignmentDirectional.centerEnd,
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          "120",
+                          style: bold,
+                        ),
+                        SizedBox(width: s8),
+                        Text(
+                          "works",
+                          style: semeBold,
+                        ),
+                      ],
+                    ),
+                    ImageItem(
+                      hasBorder: false,
+                      margin: firstMargin,
+                      imagePath: works[0],
+                    ),
+                    ImageItem(
+                      margin: secondMargin,
+                      imagePath: works[1],
+                    ),
+                    ImageItem(
+                      margin: thirdMargin,
+                      imagePath: works[2],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: s18),
+              const Row(
                 children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: [
-                      Text(
-                        "120",
-                        style: bold,
-                      ),
-                      SizedBox(width: s8),
-                      Text(
-                        "works",
-                        style: semeBold,
-                      ),
-                    ],
+                  InfoItem(
+                    num: 3,
+                    hint: 'application',
                   ),
-                  ImageItem(
-                    hasBorder: false,
-                    margin: firstMargin,
-                    imagePath: works[0],
-                  ),
-                  ImageItem(
-                    margin: secondMargin,
-                    imagePath: works[1],
-                  ),
-                  ImageItem(
-                    margin: thirdMargin,
-                    imagePath: works[2],
+                  SizedBox(width: s18),
+                  InfoItem(
+                    isDark: false,
+                    num: 25,
+                    hint: 'views tody',
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: s18),
-            const Row(
-              children: [
-                InfoItem(
-                  num: 3,
-                  hint: 'application',
-                ),
-                SizedBox(width: s18),
-                InfoItem(
-                  isDark: false,
-                  num: 25,
-                  hint: 'views tody',
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
